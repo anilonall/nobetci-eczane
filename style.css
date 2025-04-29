@@ -87,18 +87,17 @@ body {
     font-size: 20px;
   }
   
-  /* ——— RESULT ALANI ——— */
 #result {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;           /* Kartlar arası boşluk */
-    margin-top: 20px;    /* Üstteki elementten biraz boşluk */
+    gap: 20px;           
+    margin-top: 20px;    
     width: 100%;
     box-sizing: border-box;
-    padding: 0;          /* İstersen dış boşlukları ayarlayabilirsin */
+    padding: 0;          
   }
   
-  /* ——— HER BİR ECZANE KARTI ——— */
+  
   #result .eczane {
     background-color: #fff;
     border: 1px solid #ddd;
@@ -108,19 +107,19 @@ body {
     transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
   
-  /* Hover ile hafif kaldırma efekti */
+  
   #result .eczane:hover {
     transform: translateY(-3px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.12);
   }
   
-  /* Kart içindeki metinler */
+  
   #result .eczane p {
     margin: 6px 0;
     line-height: 1.4;
   }
   
-  /* Telefon linki */
+  /
   #result .eczane a {
     color: #0a6ebd;
     text-decoration: none;
@@ -131,7 +130,7 @@ body {
     text-decoration: underline;
   }
   
-  /* Yükleniyor / boş mesajları tüm satıra yay */
+  
   #result > p {
     grid-column: 1 / -1;
     text-align: center;
@@ -141,12 +140,12 @@ body {
   }
   
   #site-footer {
-    margin-top: 40px;       /* Üstten boşluk */
-    padding: 10px 0;        /* Dikey iç boşluk */
-    text-align: center;     /* Ortala */
-    color: #888;            /* Hafif gri renk */
-    font-size: 14px;        /* Küçük puntoda */
-    border-top: 1px solid #ddd; /* Üstüne ince bir çizgi */
+    margin-top: 40px;      
+    padding: 10px 0;        
+    text-align: center;   
+    color: #888;           
+    font-size: 14px;        
+    border-top: 1px solid #ddd; 
     box-sizing: border-box;
   }
   
