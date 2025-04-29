@@ -1,24 +1,24 @@
-// API URL ve header bilgilerini düzenle
-const apiUrl = 'https://api.collectapi.com/health/dutyPharmacy';
-const apiKey = 'apikey 3GxqEz6svBx0jyWJXzF1IN:26aDYW5ov2g5oUBXHdflRH'; // Buraya gerçek API anahtarını koymalısın
 
-// Eczaneleri almak için fonksiyon
+const apiUrl = 'https://api.collectapi.com/health/dutyPharmacy';
+const apiKey = 'apikey 3GxqEz6svBx0jyWJXzF1IN:26aDYW5ov2g5oUBXHdflRH'; 
+
+
 function getEczaneler() {
-  const city = document.getElementById('cityInput').value; // İl bilgisi
-  const district = document.getElementById('districtInput').value; // İlçe bilgisi
+  const city = document.getElementById('cityInput').value;
+  const district = document.getElementById('districtInput').value; 
   
-  // Loading durumu ekleyelim
+  
   const resultDiv = document.getElementById('result');
   resultDiv.innerHTML = '<p>Yükleniyor...</p>';
 
-  // Eğer il veya ilçe boşsa, uyarı göster
+  
   if (!city || !district) {
     alert("Lütfen il ve ilçe bilgisini girin.");
-    resultDiv.innerHTML = ''; // Loading mesajını temizleyelim
+    resultDiv.innerHTML = ''; 
     return;
   }
 
-  // API'ye GET isteği yapalım
+  
   fetch(`${apiUrl}?ilce=${district}&il=${city}`, {
     method: 'GET',
     headers: {
@@ -26,10 +26,10 @@ function getEczaneler() {
       'content-type': 'application/json'
     }
   })
-    .then(response => response.json())  // Yanıtı JSON formatında al
+    .then(response => response.json())  
     .then(data => {
       if (data.result && data.result.length > 0) {
-        displayResults(data.result);  // Veriyi işleyip göster
+        displayResults(data.result);  
       } else {
         resultDiv.innerHTML = '<p>Bu bölge için nöbetçi eczane bulunamadı.</p>';
       }
@@ -37,28 +37,28 @@ function getEczaneler() {
     .catch(error => {
       console.error("Bir hata oluştu:", error);
       alert("Eczaneler alınırken bir hata oluştu.");
-      resultDiv.innerHTML = ''; // Hata mesajını temizleyelim
+      resultDiv.innerHTML = ''; 
     });
 }
 
-// Eczane sonuçlarını ekranda gösteren fonksiyon
+
 function displayResults(eczaneler) {
   const resultDiv = document.getElementById('result');
-  resultDiv.innerHTML = ''; // Önceki sonuçları temizle
+  resultDiv.innerHTML = ''; 
 
-  // Eczaneleri listele
+  
   eczaneler.forEach(eczane => {
     const eczaneDiv = document.createElement('div');
     eczaneDiv.classList.add('eczane');
     
-    // Eczane bilgilerini ekle
+    
     eczaneDiv.innerHTML = `
       <p><strong>Adı:</strong> ${eczane.name}</p>
       <p><strong>Adres:</strong> ${eczane.address}</p>
       <p><strong>Telefon:</strong> <a href="tel:${eczane.phone}">${eczane.phone}</a></p>
     `;
     
-    // Eczaneyi ekranda göster
+    
     resultDiv.appendChild(eczaneDiv);
   });
 }
